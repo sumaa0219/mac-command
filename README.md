@@ -10,7 +10,7 @@
   ```
  - 下記を.zshrcに書く
   ```
-  export PATH=$HOME/cloneした場所のディレクトリ名:$PATH
+  export PATH=$HOME/mac-command:$PATH
   ```
  - 変更した内容を反映させる
   ```
