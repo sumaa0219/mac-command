@@ -1,0 +1,2 @@
+#!/bin/sh
+touch ./report`date +%Y:%m%d`.tex

@@ -1,0 +1,2 @@
+#!/bin/sh
+touch ./${1:-plot_drawio`date +%Y:%m%d%H%M`}.drawio

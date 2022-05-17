@@ -1,0 +1,11 @@
+#!/bin/sh
+alias draw.io=/Applications/draw.io.app/Contents/MacOS/draw.io
+draw.io -x -f pdf $1
+File=${1%.*}
+pdfcrop $File.pdf ${2:-$File}.pdf
+if [ "$2" = "$File" ]; then
+    rm -f $File.pdf
+    echo "File Renamed"    
+else
+    echo "success!!"
+fi
