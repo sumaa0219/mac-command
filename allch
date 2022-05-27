@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$1" = "drawio" ]; then
+    find ./ -name "*.$1" -exec chpdf {} \;    
+else
+    echo "Didnt select .drawio"
+fi
+
