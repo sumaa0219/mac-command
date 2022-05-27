@@ -18,8 +18,8 @@
   ```
   
   
- - コマンドを使うには権限が必要 ex)sudo chmod 777 chpdf
+ - コマンドを使うには権限が必要 
   ```
-  sudo chmod 777 コマンドファイル
+  find ./ -name . -exec sudo chmod 777 {} \;
   ```
 
