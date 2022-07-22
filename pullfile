@@ -1,0 +1,17 @@
+#!/bin/sh
+FORMAT=${2:-"JPG"}
+
+if [ "$1" = "today" ]; then
+    DATE=`date +%Y-%m-%d`
+else
+    DATE=${1:-`date +%Y-%m-%d`}
+fi
+echo "Serch the date:${DATE} extention:${FORMAT} Please Wait..."
+REDATE=`echo ${DATE//-/:}`
+PushFile="/Users/${USER}/Desktop/${REDATE}"
+mkdir $PushFile
+
+cd /Volumes/Untitled/DCIM
+find . -type f -name "*.${FORMAT}" -newermt "${DATE}" -exec cp -f {} $PushFile \;
+
+echo "succes full"

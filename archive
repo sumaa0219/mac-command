@@ -14,9 +14,9 @@ if [[ "$crpath" == *analog* ]]; then
     archivefile="analogElectro"
 fi
 
-find $crpath/out -name "*.pdf" -type f -exec cp -f {} /Users/sugiyamakouta/Desktop/${2:-"unknown"}.pdf \;
+find $crpath/out -name "*.pdf" -type f -exec cp -f {} /Users/$USER/Desktop/${2:-"unknown"}.pdf \;
 
-cd /Users/sugiyamakouta/Documents/document/3rd-archive/$archivefile/
+cd /Users/$USER/Documents/document/3rd-archive/$archivefile/
 mkdir $number
 
 cp -r -f $crpath/* ./$number

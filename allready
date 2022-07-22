@@ -1,3 +1,4 @@
 #!/bin/sh
 
-find ./ -name . -exec sudo chmod 777 {} \;
+find ./ -exec sudo chmod 777 {} \;
+echo "succece full"
