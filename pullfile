@@ -1,8 +1,10 @@
 #!/bin/sh
-FORMAT=${2:-"JPG"}
+FORMAT=${3:-"JPG"}
 
 if [ "$1" = "today" ]; then
     DATE=`date +%Y-%m-%d`
+elif [ "$1" = "yesterday" ]; then
+    DATE=`date -j -v-1d +"%Y-%m-%d"`
 else
     DATE=${1:-`date +%Y-%m-%d`}
 fi
@@ -11,7 +13,10 @@ REDATE=`echo ${DATE//-/:}`
 PushFile="/Users/${USER}/Desktop/${REDATE}"
 mkdir $PushFile
 
-cd /Volumes/Untitled/DCIM
-find . -type f -name "*.${FORMAT}" -newermt "${DATE}" -exec cp -f {} $PushFile \;
-
+if [ "$2" = "here" ]; then
+    find . -type f -name "*.${FORMAT}" -newermt "${DATE}" -exec cp -f {} $PushFile \;
+else
+    cd /Volumes/Untitled/DCIM
+    find . -type f -name "*.${FORMAT}" -newermt "${DATE}" -exec cp -f {} $PushFile \;
+fi
 echo "succes full"
