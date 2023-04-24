@@ -1,2 +1,2 @@
 #!/bin/sh
-touch ./report`date +%Y:%m%d`.tex
+touch ./${1:-report`date +%Y:%m%d%H%M`}.tex

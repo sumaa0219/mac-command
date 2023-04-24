@@ -1,5 +1,6 @@
 #!/bin/sh
 cp /Users/sugiyamakouta/Library/texmf/tex/latex/eee.sty ./
 cp /Users/sugiyamakouta/Library/texmf/tex/latex/jlisting.sty ./
+cp /Users/sugiyamakouta/Library/texmf/tex/latex/macro.sty ./
 newtex
-plot
+draw
