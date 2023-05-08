@@ -7,6 +7,5 @@ if [ "$2" = "$File" ]; then
     rm -f $File.pdf
     echo "File Renamed"    
 else
-    rm -f $1
     echo "successFull!!"
 fi
