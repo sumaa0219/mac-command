@@ -4,8 +4,7 @@ draw.io -x -f pdf $1
 File=${1%.*}
 pdfcrop $File.pdf ${2:-$File}.pdf
 if [ "$2" = "$File" ]; then
-    rm -f $File.pdf
-    echo "File Renamed"    
+    echo "File Renamed" 
 else
     echo "successFull!!"
 fi

@@ -22,6 +22,7 @@ D10=[]
 graph_sorce_x = []
 graph_sorce_y = []
 label = []
+# plt.figure().set_size_inches(10,8)
 
 with open(file_path, 'r', encoding="utf-8") as f:
     header = next(csv.reader(f))
@@ -45,8 +46,12 @@ with open(file_path, 'r', encoding="utf-8") as f:
 
 
 def single(x,y,colors="red",markers="o"):
-    y_max = max(y) + 5
-    plt.ylim(0,y_max)
+    global start_value,end_value
+    if end_value is None:
+        end_value = max(y) + 5
+    else:
+        pass
+    plt.ylim(float(start_value),float(end_value))
     plt.plot(x, y,color = colors, marker = markers)
     plt.show(block=True)
     
@@ -75,7 +80,30 @@ def multi(labels,colors="red",markers="o"):
     
     plt.show(block=True)
 
+def selectmulti(x,y,labels,colors="red",markers="o"):
+    try:
+        plt.plot(x[0],y[0],label=labels[0],color = "red", marker = markers)
+        plt.legend()
+        plt.plot(x[1],y[1],label=labels[1],color = "blue", marker = markers)
+        plt.legend()
+        plt.plot(x[2],y[2],label=labels[2],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[3],y[3],label=labels[3],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[4],y[4],label=labels[4],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[5],y[5],label=labels[5],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[6],y[6],label=labels[6],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[7],y[7],label=labels[7],color = colors, marker = markers)
+        plt.legend()
+        plt.plot(x[8],y[8],label=labels[8],color = colors, marker = markers)
+        plt.legend()
+    except:
+        pass
 
+    plt.show(block=True)
 
 
 
@@ -96,6 +124,16 @@ try:
     plt.ylabel(ylabel)
 except:
     ylabel = None
+
+try:
+
+    start_value_id = args.index("-rg") + 1
+    start_value = args[start_value_id]
+    end_value = args[start_value_id + 1]
+except:
+    start_value = 0
+    end_value = None
+
 
 plot_type_id = args.index("-pt") + 1    #plot type
 plot_type = args[plot_type_id]
@@ -123,6 +161,35 @@ elif plot_type == "m":
         for x  in range(count-1):
             label.append(args[int(label_id) + int(x+1)])
     multi(label)
+elif plot_type == "sm":
+    sm_sorce = []
+    x_list = []
+    y_list = []
+    try:
+        label_id = args.index("-ln") #labelName
+    except:
+        label_id = None
+
+    if label_id is None:
+        for x  in range(count-1):
+            label.append(x+1)
+    else:
+        for x  in range(count-1):
+            label.append(args[int(label_id) + int(x+1)])
+    num_graph = args[plot_type_id+1]
+    for x  in range(int(num_graph)):
+        sm_sorce.append(args[plot_type_id+2+x])
+    print(sm_sorce)
+    for z in sm_sorce:
+        num_x = z[:1]
+        exec('graph_sorce_x = D' + num_x)
+        x_list.append(graph_sorce_x)
+        num_y = z[2:]
+        exec("graph_sorce_y = D" + num_y)
+        y_list.append(graph_sorce_y)
+    selectmulti(x_list,y_list,label)
+
+
 
 
 
